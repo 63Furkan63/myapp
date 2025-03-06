@@ -56,11 +56,21 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget tarifOlustur(Tarif tarif) {
     return Card(
-      child: Column(
-        children: [
-          Image(image: AssetImage(tarif.yemekResmi)),
-          Text(tarif.yemekAdi),
-        ],
+      color: Colors.lightBlueAccent,
+      elevation: 5.0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0)),
+      child: Padding(
+        padding: const EdgeInsets.all(18.0),
+        child: Column(
+          children: [
+            Image(image: AssetImage(tarif.yemekResmi)),
+            SizedBox(height: 12),
+            Text(
+              tarif.yemekAdi,
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+            ),
+          ],
+        ),
       ),
     );
   }
