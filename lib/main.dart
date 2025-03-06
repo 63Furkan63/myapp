@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/tarif.dart';
 
 void main() {
   runApp(const MyApp());
@@ -42,7 +43,25 @@ class _MyHomePageState extends State<MyHomePage> {
 
         title: Text(widget.title),
       ),
-      body: SafeArea(child: Container()),
+      body: SafeArea(
+        child: ListView.builder(
+          itemCount: Tarif.yemekler.length,
+          itemBuilder: (context, index) {
+            return tarifOlustur(Tarif.yemekler[index]);
+          },
+        ),
+      ),
+    );
+  }
+
+  Widget tarifOlustur(Tarif tarif) {
+    return Card(
+      child: Column(
+        children: [
+          Image(image: AssetImage(tarif.yemekResmi)),
+          Text(tarif.yemekAdi),
+        ],
+      ),
     );
   }
 }
