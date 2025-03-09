@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/tarif.dart';
+import 'package:myapp/tarif_detay.dart';
 
 void main() {
   runApp(const MyApp());
@@ -43,12 +44,20 @@ class _MyHomePageState extends State<MyHomePage> {
 
         title: Text(widget.title),
       ),
-      body: SafeArea(
-        child: ListView.builder(
-          itemCount: Tarif.yemekler.length,
-          itemBuilder: (context, index) {
-            return tarifOlustur(Tarif.yemekler[index]);
-          },
+      body: GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => TarifDetay()),
+          );
+        },
+        child: SafeArea(
+          child: ListView.builder(
+            itemCount: Tarif.yemekler.length,
+            itemBuilder: (context, index) {
+              return tarifOlustur(Tarif.yemekler[index]);
+            },
+          ),
         ),
       ),
     );
