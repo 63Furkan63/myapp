@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/tarif.dart';
 
 class TarifDetay extends StatefulWidget {
-  const TarifDetay({super.key});
+  final Tarif tarif;
+  const TarifDetay({super.key, required this.tarif});
 
   @override
   State<TarifDetay> createState() => _TarifDetayState();
@@ -10,11 +12,31 @@ class TarifDetay extends StatefulWidget {
 class _TarifDetayState extends State<TarifDetay> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 200,
-      width: 200,
-      color: Colors.blueGrey,
-      child: Text("Merhaba Kitap"),
+    return Scaffold(
+      appBar: AppBar(title: Text("Yemek Detay Sayfası")),
+      body: SafeArea(
+        child: Card(
+          color: Color.fromARGB(255, 235, 227, 122),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.0),
+          ),
+          elevation: 2.0,
+          child: Column(
+            children: [
+              SizedBox(
+                height: 300,
+                width: double.infinity,
+                child: Image(image: AssetImage(widget.tarif.yemekResmi)),
+              ),
+              SizedBox(height: 5.0),
+              Text(
+                widget.tarif.yemekAdi,
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
